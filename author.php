@@ -656,7 +656,8 @@ if( $get_tab=='collect'){
 	echo '<ul class="user-msg"><li class="tip">'.$item_html.'</ul></li>';
 	//global $wp_query;
 	//$args = array_merge( $wp_query->query_vars, array( 'post__in' => $collects_array, 'post_status' => 'publish' ) );
-	query_posts( array( 'post__not_in'=>get_option('sticky_posts'), 'post__in' => $collects_array, 'post_status' => 'publish' ) );
+	$paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
+	query_posts( array( 'post__not_in'=>get_option('sticky_posts'), 'post__in' => $collects_array, 'post_status' => 'publish', 'paged' => $paged ) );
 		while ( have_posts() ) : the_post();
 			get_template_part('includes/content','archive');
 		endwhile; // end of the loop. 
