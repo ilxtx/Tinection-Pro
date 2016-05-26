@@ -593,6 +593,7 @@ function pagenavi( $before = '', $after = '', $p = 2 ) {
         p_link( $paged - 1, '上一页', '<span class="pg-item pg-nav-item pg-prev">' ,'上一页' );
     if ( $paged > $p + 1 )
         p_link( 1, '首页','<span class="pg-item">',1 );
+        if ( $paged > 2 + $p ) echo '<span class="pg-item"> ... </span>';
     for( $i = $paged - $p; $i <= $paged + $p; $i++ ) {
         if ( $i > 0 && $i <= $max_page )
             $i == $paged ? print "<span class='pg-item pg-item-current'><span class='current'>{$i}</span></span>" : p_link( $i,'', '<span class="pg-item">',$i);
